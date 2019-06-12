@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MySpApiService } from '../../core/my-sp-api.service';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  mensaje: any;
+  //constructor() { }
+  constructor(private spService: MySpApiService) { }
 
   ngOnInit() {
+    //this.spService.proxyLocal;
+    this.getMessagesFromService();
   }
 
+  getMessagesFromService(){
+    const mostrar = new MySpApiService;
+    this.mensaje = mostrar.testing();
+  }
 }
